@@ -1,10 +1,9 @@
-import { SyllableCounter } from "./SyllableCounter/SyllableCounter";
+import { HaikuTracker } from "./HaikuTracker/HaikuTracker";
 
 export const metadata = {
   title: "App Router",
 };
 
 export default function Page() {
-	const syllablePattern = [5, 7, 5];
-	return syllablePattern.map((num) => { return <SyllableCounter limit={num} /> });
+	return <HaikuTracker />
 }

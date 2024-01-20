@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-	"predeploy": "npm run build",
+	"predeploy": "npm run build && type nul >> ./out/.nojekyll",
 	"deploy": "gh-pages -d out -t true",
     "dev": "next dev",
     "build": "next build",

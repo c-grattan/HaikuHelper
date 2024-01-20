@@ -1,5 +1,5 @@
 "use client"
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, use, useState } from "react";
 
 function getWordSyllables(word: string, minLength: number = 2): number {
 	if(word.length === 0) {
@@ -31,11 +31,12 @@ export function countSyllables(inputText: string): number {
 }
 
 type SCProps = {
-	limit: number
+	limit: number,
+	lineText?: [string, Dispatch<SetStateAction<string>>]
 };
 
-export const SyllableCounter = ({limit}: SCProps) => {
-	const [text, setText] = useState("");
+export const SyllableCounter = ({limit, lineText}: SCProps) => {
+	let [text, setText] = lineText ? lineText : useState("");
 
 	function handleTextChange(event: ChangeEvent<HTMLInputElement>) {
 		setText(event.target.value);

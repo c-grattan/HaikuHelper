@@ -24,7 +24,7 @@ describe("Component", () => {
 		return screen.getByTestId("syllableTextInput");
 	}
 
-	function changeText(text: string, input: HTMLInputElement = getTextInput()): void {
+	function changeText(text: string, input: HTMLInputElement): void {
 		fireEvent.change(input, {
 			target: {
 				value: text
@@ -53,7 +53,7 @@ describe("Component", () => {
 		}
 		expect(readSyllableCount()).toEqual(0);
 		const newSentence: string = "This is a new sentence";
-		changeText(newSentence);
+		changeText(newSentence, getTextInput());
 		expect(readSyllableCount()).toEqual(countSyllables(newSentence));
 	});
 

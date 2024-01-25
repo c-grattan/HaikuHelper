@@ -15,7 +15,7 @@ describe("Function", () => {
 });
 
 describe("Component", () => {
-	const limit: number = 7;
+	const limit: number = 5;
 	beforeEach(() => {
 		render(<SyllableCounter limit={limit} />);
 	});
@@ -59,5 +59,15 @@ describe("Component", () => {
 
 	test("Displays syllable limit", () => {
 		expect(screen.getByTestId("syllableLimit").textContent).toEqual(limit.toString());
+	});
+
+	describe("Progress meter", () => {
+		test("Updates with syllable count", () => {
+			expect(screen.getByTestId("progressMeter").getAttribute("aria-valuenow")).toEqual("0");
+			const text = "Test text";
+			const syllableCount = countSyllables(text);
+			changeText(text, getTextInput());
+			expect(screen.getByTestId("progressMeter").getAttribute("aria-valuenow")).toEqual((syllableCount / limit * 100).toString());
+		});
 	});
 });

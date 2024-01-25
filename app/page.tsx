@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import { HaikuTracker } from "./HaikuTracker/HaikuTracker";
 
 export const metadata = {
@@ -5,5 +6,7 @@ export const metadata = {
 };
 
 export default function Page() {
-	return <HaikuTracker />
+	return <Container maxWidth="md">
+			<HaikuTracker />
+		</Container>
 }

@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-	"predeploy": "npm run build && type nul >> ./out/.nojekyll",
-	"deploy": "gh-pages -d out -t true",
+    "predeploy": "npm run build && type nul >> ./out/.nojekyll",
+    "deploy": "gh-pages -d out -t true",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -11,6 +11,10 @@
     "coverage": "jest --collectCoverage true"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/material": "^5.15.6",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

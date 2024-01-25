@@ -1,5 +1,6 @@
 "use client"
 
+import { Button, Grid } from "@mui/material";
 import { SyllableCounter } from "../SyllableCounter/SyllableCounter";
 import { Dispatch, SetStateAction, useState } from "react";
 
@@ -17,9 +18,13 @@ export const HaikuTracker = () => {
 		});
 	} 
 
-	return <>
-		{syllablePattern.map((num, index) => { return <SyllableCounter key={index} limit={num} lineText={lines[index]} /> })}
-		<button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</button>
-		<button data-testid="resetButton" onClick={() => reset()}>Reset</button>
-	</>
+	return <Grid container direction="column">
+		<Grid item>
+			{syllablePattern.map((num, index) => { return <SyllableCounter key={index} limit={num} lineText={lines[index]} label={"Line " + (index + 1)} /> })}
+		</Grid>
+		<Grid item>
+			<Button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</Button>
+			<Button data-testid="resetButton" onClick={() => reset()}>Reset</Button>
+		</Grid>
+	</Grid>
 };

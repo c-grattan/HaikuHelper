@@ -1,8 +1,15 @@
 "use client"
 
-import { Button, Grid } from "@mui/material";
+import { Button, CssBaseline, Grid } from "@mui/material";
 import { SyllableCounter } from "../SyllableCounter/SyllableCounter";
 import { Dispatch, SetStateAction, useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const darkTheme = createTheme({
+	palette: {
+		mode: "dark"
+	}
+});
 
 export const HaikuTracker = () => {
 	const syllablePattern = [5, 7, 5];
@@ -18,13 +25,16 @@ export const HaikuTracker = () => {
 		});
 	} 
 
-	return <Grid container direction="column">
-		<Grid item>
-			{syllablePattern.map((num, index) => { return <SyllableCounter key={index} limit={num} lineText={lines[index]} label={"Line " + (index + 1)} /> })}
+	return <ThemeProvider theme={darkTheme}>
+		<CssBaseline />
+		<Grid container direction="column">
+			<Grid item>
+				{syllablePattern.map((num, index) => { return <SyllableCounter key={index} limit={num} lineText={lines[index]} label={"Line " + (index + 1)} /> })}
+			</Grid>
+			<Grid item>
+				<Button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</Button>
+				<Button data-testid="resetButton" onClick={() => reset()}>Reset</Button>
+			</Grid>
 		</Grid>
-		<Grid item>
-			<Button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</Button>
-			<Button data-testid="resetButton" onClick={() => reset()}>Reset</Button>
-		</Grid>
-	</Grid>
+	</ThemeProvider>
 };

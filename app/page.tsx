@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import { HaikuTracker } from "./HaikuTracker/HaikuTracker";
 
 export const metadata = {
-  title: "App Router",
+  title: "Haiku Helper",
 };
 
 export default function Page() {

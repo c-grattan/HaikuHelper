@@ -31,9 +31,11 @@ export const HaikuTracker = () => {
 			<Grid item>
 				{syllablePattern.map((num, index) => { return <SyllableCounter key={index} limit={num} lineText={lines[index]} label={"Line " + (index + 1)} /> })}
 			</Grid>
-			<Grid item>
-				<Button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</Button>
-				<Button data-testid="resetButton" onClick={() => reset()}>Reset</Button>
+			<Grid item padding={1}>
+				<center>
+					<Button data-testid="copyButton" onClick={() => copyHaiku()}>Copy</Button>
+					<Button data-testid="resetButton" onClick={() => reset()}>Reset</Button>
+				</center>
 			</Grid>
 		</Grid>
 	</ThemeProvider>

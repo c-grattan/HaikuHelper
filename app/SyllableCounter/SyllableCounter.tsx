@@ -47,6 +47,7 @@ export const SyllableCounter = ({limit, lineText, label}: SCProps) => {
 	const syllableCount = countSyllables(text);
 
 	return <>
+		<br/>
 		<TextField
 			inputProps={{
 				"data-testid": "syllableTextInput"
@@ -64,6 +65,5 @@ export const SyllableCounter = ({limit, lineText, label}: SCProps) => {
 			data-testid="progressMeter"
 			value={syllableCount / limit * 100}
 		/>
-		<br/>
 	</>;
 };
